@@ -1,0 +1,8 @@
+node_modules
+.eslintrc.js
+babel.config.js
+nodesource_setup.sh
+package-lock.json
+package.json
+*main.js
+git_render.sh
