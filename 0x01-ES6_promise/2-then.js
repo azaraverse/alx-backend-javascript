@@ -6,7 +6,7 @@ export default function handleResponseFromAPI(promise) {
   // when the promise resolves,
   const newPromise = promise.then(() => resolveObj);
   // when the promise rejects,
-  const newCatch = newPromise.catch((error) => new Error());
+  const newCatch = newPromise.catch(() => new Error());
   // on every resolution,
   const final = newCatch.finally(() => {
     console.log('Got a response from the API');
