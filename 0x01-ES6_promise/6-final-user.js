@@ -6,8 +6,10 @@ export default function handleProfileSignup(firstName, lastName, fileName) {
     .allSettled([signUpUser(firstName, lastName), uploadPhoto(fileName)])
     .then((results) => {
       results.map((result) => ({
-        status: result.status,
-        value: result.value,
+        return: {
+          status: result.status,
+          value: result.value || result.reason,
+        },
       }));
     });
 }
