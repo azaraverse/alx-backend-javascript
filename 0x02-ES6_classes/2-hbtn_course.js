@@ -38,7 +38,11 @@ export default class HolbertonCourse {
 
   // setter for length attribute
   set length(value) {
-    this._length = value;
+    if (typeof value === 'number') {
+      this._length = value;
+    } else {
+      throw new TypeError('Length must be a number');
+    }
   }
 
   // getter for students attribute
@@ -48,6 +52,10 @@ export default class HolbertonCourse {
 
   // setter for students attribute
   set students(value) {
-    this._students = value;
+    if (Array.isArray(value) && value.every((student) => typeof student === 'string')) {
+      this._students = value;
+    } else {
+      throw new TypeError('Students must be an array of Strings');
+    }
   }
 }
