@@ -7,7 +7,7 @@ interface DirectorInterface {
 interface TeacherInterface {
     workFromHome(): string;
     getCoffeeBreak(): string;
-    workDirectorTasks(): string;
+    workTeacherTasks(): string;
 };
 
 class Director implements DirectorInterface {
@@ -33,7 +33,7 @@ class Teacher implements TeacherInterface {
         return 'Cannot have a break';
     };
 
-    workDirectorTasks(): string {
+    workTeacherTasks(): string {
         return 'Getting to work';
     }
 }
@@ -53,7 +53,41 @@ console.log(createEmployee(200).getCoffeeBreak());
 console.log(createEmployee(1000).workFromHome());
 // Output: Director
 // Working from home
-console.log(createEmployee('$500').workDirectorTasks());
+// console.log(createEmployee('$500').workDirectorTasks());
 // Output: Director
 // Getting to director tasks
+
+const isDirector = (employee: any): employee is Director => {
+    return employee instanceof Director;
+}
+
+const executeWork = (employee: Director | Teacher): string => {
+    if (isDirector(employee)) {
+        return employee.workDirectorTasks();
+    } else {
+        return employee.workTeacherTasks();
+    }
+};
+
+// tests
+console.log(executeWork(createEmployee(200)));
+// Output: Getting to work
+console.log(executeWork(createEmployee(1000)));
+// Output: Getting to director tasks
+
+type Subjects = 'Math' | 'History';
+
+const teachClass = (todayClass: Subjects): string => {
+    if (todayClass === 'Math') {
+        return 'Teaching Math';
+    } else {
+        return 'Teaching History';
+    }
+}
+
+// tests
+console.log(teachClass('Math'));
+// Output: Teaching Math
+console.log(teachClass('History'));
+// Output: Teaching Histor
 
