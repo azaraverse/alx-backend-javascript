@@ -63,7 +63,7 @@ const filePath = process.argv[2];
 const app = express();
 
 app.get('/', (req, res) => {
-  res.statusCode = 200;
+  res.status(200);
   res.send('Hello Holberton School!');
 });
 
@@ -73,7 +73,7 @@ app.get('/students', (req, res) => {
       res.send(`This is the list of our students\n${data}`);
     })
     .catch(() => {
-      res.statusCode = 500;
+      res.status(500);
       res.send('Cannot load the database');
     });
 });
