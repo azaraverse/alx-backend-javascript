@@ -13,6 +13,22 @@ app.get('/cart/:id(\\d+)', (request, response) => {
   response.send(`Payment methods for cart ${id}`);
 });
 
+app.get('/available_payments', (request, response) => {
+  response.send({
+    payment_methods: {
+      credit_cards: true,
+      paypal: false,
+    },
+  });
+});
+
+app.use(express.json());
+
+app.post('/login', (request, response) => {
+  const { userName } = request.body;
+  response.send(`Welcome ${userName}`);
+});
+
 app.listen(port, () => {
   console.log(`API available on localhost port ${port}`);
 });

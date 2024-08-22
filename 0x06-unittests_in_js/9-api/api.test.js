@@ -1,7 +1,7 @@
 const request = require('request');
 const { expect } = require('chai');
 
-describe('GET index page', () => {
+describe('gET index page', () => {
   it('responds with required information', () => {
     request('http://localhost:7865', (req, res, body) => {
       expect(res.statusCode).to.equal(200);
@@ -25,14 +25,14 @@ describe('correct status code for when id is a number', () => {
   });
   it('checks for alphanumerics as id', () => {
     request('http://localhost:7865/cart/abc123', (req, res, body) => {
-        expect(res.statusCode).to.equal(404);
-        expect(body).to.include('Cannot GET /cart/abc123');
-    })
-  })
+      expect(res.statusCode).to.equal(404);
+      expect(body).to.include('Cannot GET /cart/abc123');
+    });
+  });
   it('checks for empty id endpoints as id', () => {
     request('http://localhost:7865/cart/', (req, res, body) => {
-        expect(res.statusCode).to.equal(404);
-        expect(body).to.include('Cannot GET /cart/');
-    })
-  })
+      expect(res.statusCode).to.equal(404);
+      expect(body).to.include('Cannot GET /cart/');
+    });
+  });
 });
