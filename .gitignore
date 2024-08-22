@@ -9,3 +9,5 @@ git_render.sh
 *.csv
 !0x06-unittests_in_js/package.json
 !0x06-unittests_in_js/8-api/package.json
+!0x06-unittests_in_js/9-api/package.json
+!0x06-unittests_in_js/10-api/package.json
