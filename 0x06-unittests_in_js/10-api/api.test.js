@@ -26,12 +26,18 @@ describe('GET /cart/:id', () => {
       expect(body).to.include('Cannot GET /cart/abc');
     });
   });
+});
+
+describe('GET /cart/:id', () => {
   it('checks for alphanumerics as id', () => {
     request('http://localhost:7865/cart/abc123', (req, res, body) => {
       expect(res.statusCode).to.equal(404);
       expect(body).to.include('Cannot GET /cart/abc123');
     });
   });
+});
+
+describe('GET /cart/:id', () => {
   it('checks for empty id endpoints as id', () => {
     request('http://localhost:7865/cart/', (req, res, body) => {
       expect(res.statusCode).to.equal(404);
