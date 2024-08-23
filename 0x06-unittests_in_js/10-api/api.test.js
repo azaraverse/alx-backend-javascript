@@ -1,7 +1,7 @@
 const request = require('request');
 const { expect } = require('chai');
 
-describe('gET index page', () => {
+describe('GET /', () => {
   it('responds with required information', () => {
     request('http://localhost:7865', (req, res, body) => {
       expect(res.statusCode).to.equal(200);
@@ -17,7 +17,7 @@ describe('correct status code for when id is a number', () => {
       expect(body).to.equal('Payment methods for cart 10');
     });
   });
-  it('checks for invalid id number', () => {
+  it('checks for id not a number', () => {
     request('http://localhost:7865/cart/abc', (req, res, body) => {
       expect(res.statusCode).to.equal(404);
       expect(body).to.include('Cannot GET /cart/abc');
@@ -37,7 +37,7 @@ describe('correct status code for when id is a number', () => {
   });
 });
 
-describe('gET /available_payments endpoint', () => {
+describe('GET /available_payments', () => {
   it('should return available payment methods', () => {
     request('http://localhost:7865/available_payments', (req, res, body) => {
       expect(res.statusCode).to.equal(200);
@@ -51,7 +51,7 @@ describe('gET /available_payments endpoint', () => {
   });
 });
 
-describe('pOST /login endpoint', () => {
+describe('POST /login', () => {
   it('should return a welcome message with username', () => {
     request.post({
       url: 'http://localhost:7865/login/',
