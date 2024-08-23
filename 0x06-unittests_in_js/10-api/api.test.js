@@ -10,13 +10,16 @@ describe('GET /', () => {
   });
 });
 
-describe('correct status code for when id is a number', () => {
+describe('GET /cart/:id', () => {
   it('checks for valid id number', () => {
     request('http://localhost:7865/cart/10', (req, res, body) => {
       expect(res.statusCode).to.equal(200);
       expect(body).to.equal('Payment methods for cart 10');
     });
   });
+});
+
+describe('GET /cart/:id', () => {
   it('checks for id not a number', () => {
     request('http://localhost:7865/cart/abc', (req, res, body) => {
       expect(res.statusCode).to.equal(404);
